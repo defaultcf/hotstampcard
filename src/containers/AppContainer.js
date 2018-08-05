@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import firebase from "../firebase";
-import App from "../App";
+import App from "../components/App";
 import { loginOk, logout } from "../actions";
 
 const mapStateToProps = state => ({
