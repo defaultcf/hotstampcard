@@ -5,11 +5,10 @@ import rootReducer from "./reducers";
 // For connected-react-router
 import { createBrowserHistory } from "history";
 import { applyMiddleware, compose, createStore } from "redux";
-import { connectRouter, ConnectedRouter, routerMiddleware } from "connected-react-router";
-import { Route, Switch } from "react-router";
+import { connectRouter, routerMiddleware } from "connected-react-router";
 // Local
 import "./index.css";
-import NavbarContainer from "./containers/NavbarContainer";
+import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 
 const history = createBrowserHistory();
@@ -26,15 +25,7 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
-      <div>
-        <NavbarContainer />
-        <Switch>
-          <Route exact path="/" render={() => (<div>Top</div>)} />
-          <Route render={() => (<div>404</div>)} />
-        </Switch>
-      </div>
-    </ConnectedRouter>
+    <App history={history} />
   </Provider>,
   document.getElementById("root")
 );

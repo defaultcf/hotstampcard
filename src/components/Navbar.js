@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   componentDidMount() {
@@ -8,8 +9,14 @@ class Navbar extends Component {
   render() {
     return (
       <div className="Navbar">
-        <button onClick={this.props.doLogin}>Twitter Login</button>
-        <button onClick={this.props.logout}>Logout</button>
+        <div>
+          <Link to="/">Top</Link>
+          <Link to="mypage">MyPage</Link>
+        </div>
+        <div>
+          <button onClick={this.props.doLogin}>Twitter Login</button>
+          <button onClick={this.props.logout}>Logout</button>
+        </div>
       </div>
     );
   }
