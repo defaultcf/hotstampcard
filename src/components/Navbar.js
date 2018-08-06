@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
-class App extends Component {
+class Navbar extends Component {
   componentDidMount() {
     this.props.refLogin();
   }
 
   render() {
     return (
-      <div className="App">
+      <div className="Navbar">
         <button onClick={this.props.doLogin}>Twitter Login</button>
         <button onClick={this.props.logout}>Logout</button>
       </div>
@@ -15,4 +15,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Navbar;

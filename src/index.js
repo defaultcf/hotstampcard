@@ -9,7 +9,7 @@ import { connectRouter, ConnectedRouter, routerMiddleware } from "connected-reac
 import { Route, Switch } from "react-router";
 // Local
 import "./index.css";
-import App from "./containers/AppContainer";
+import NavbarContainer from "./containers/NavbarContainer";
 import registerServiceWorker from "./registerServiceWorker";
 
 const history = createBrowserHistory();
@@ -28,8 +28,9 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <div>
+        <NavbarContainer />
         <Switch>
-          <Route exact path="/" component={App} />
+          <Route exact path="/" render={() => (<div>Top</div>)} />
           <Route render={() => (<div>404</div>)} />
         </Switch>
       </div>

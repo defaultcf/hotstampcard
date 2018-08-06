@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import firebase from "../firebase";
-import App from "../components/App";
+import Navbar from "../components/Navbar";
 import { loginOk, logout } from "../actions";
 
 const mapStateToProps = state => ({
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(Navbar);
