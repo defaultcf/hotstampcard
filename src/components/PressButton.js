@@ -5,7 +5,7 @@ class PressButton extends Component {
     const { user } = this.props;
     return (
       <div>
-        <button onClick={() => this.props.pushButton(user.uid)}>Press!</button>
+        <button onClick={() => this.props.pushButton(user)}>Press!</button>
       </div>
     )
   }
