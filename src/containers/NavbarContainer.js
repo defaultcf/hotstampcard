@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import firebase from "../firebase";
+import { firebaseApp } from "../firebase";
 import Navbar from "../components/Navbar";
 import { loginOk, logout } from "../actions";
 
@@ -9,17 +9,17 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   doLogin: () => {
-    let provider = new firebase.auth.TwitterAuthProvider();
-    firebase.auth().signInWithPopup(provider);
+    let provider = new firebaseApp.auth.TwitterAuthProvider();
+    firebaseApp.auth().signInWithPopup(provider);
   },
   refLogin: () => {
-    firebase.auth().onAuthStateChanged(user => {
+    firebaseApp.auth().onAuthStateChanged(user => {
       if (!user) dispatch(logout());
       else dispatch(loginOk(user));
     })
   },
   logout: () => {
-    firebase.auth().signOut();
+    firebaseApp.auth().signOut();
   },
 });
 
