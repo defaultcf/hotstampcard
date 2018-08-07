@@ -12,6 +12,7 @@ class Navbar extends Component {
         <div>
           <Link to="/">Top</Link>
           <Link to="mypage">MyPage</Link>
+          <Link to="press">Press</Link>
         </div>
         <div>
           <button onClick={this.props.doLogin}>Twitter Login</button>
