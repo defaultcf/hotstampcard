@@ -1,10 +1,33 @@
 import { connect } from "react-redux";
+import moment from "moment";
 import PressButton from "../components/PressButton";
 import { db } from "../firebase";
+import { didPushToday } from "../actions/stamps";
 
-const mapStateToProps = state => ({user: state.auth});
+const mapStateToProps = state => ({
+  user: state.auth,
+  pushToday: state.stamps.pushToday,
+});
 
 const mapDispatchToProps = dispatch => ({
+  checkPushToday: user => {
+    const start = moment().set("hour", 0)
+                          .set("minute", 0)
+                          .set("second", 0);
+    const end = moment().add(1, "day")
+                        .set("hour", 0)
+                        .set("minute", 0)
+                        .set("second", 0);
+    db.collection("stamps").doc(user.uid)
+      .collection("data")
+      .where("time", ">=", start.toDate())
+      .where("time", "<", end.toDate()).get()
+      .then(snapshot => {
+        if(snapshot.size === 1) {
+          dispatch(didPushToday(true));
+        }
+      });
+  },
   pushButton: user => {
     db.collection("stamps").doc(user.uid).set({
       name: user.displayName,
