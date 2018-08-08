@@ -13,9 +13,16 @@ const mapDispatchToProps = dispatch => ({
     db.collection("stamps").doc(user.uid)
       .collection("data").where("valid", "==", true)
       .onSnapshot(querySnapshot => {
-        let stamps = [];
+        let stamps = [], i = 0;
         querySnapshot.forEach(doc => {
-          stamps.push(doc.data().time);
+          i++;
+          stamps.push({
+            id: i,
+            title: "日野",
+            allDay: true,
+            start: doc.data().time,
+            end: doc.data().time,
+          });
         });
         dispatch(myStamps(stamps));
       });

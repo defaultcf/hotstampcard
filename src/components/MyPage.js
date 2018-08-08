@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Calendar from "./Calendar";
 
 class MyPage extends Component {
   componentDidMount() {
@@ -12,11 +13,7 @@ class MyPage extends Component {
         <h3>MyPage</h3>
         <p>Name: {user.displayName}</p>
         <img src={user.img} alt={user.displayName} />
-        <div>
-          {this.props.stamps.map(d =>
-            <p>{d.toString()}</p>
-          )}
-        </div>
+        <Calendar events={this.props.stamps} />
       </div>
     )
   }
