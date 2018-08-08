@@ -1,11 +1,16 @@
 import React, { Component } from "react";
+import Calendar from "./Calendar";
 
 class Top extends Component {
+  componentDidMount() {
+    this.props.getAllStamp(this.props.all);
+  }
+
   render() {
-    const locationState = this.props.location.state;
     return (
       <div>
-        {locationState ? locationState : null}
+        <h1>Title</h1>
+        <Calendar events={this.props.all}/>
       </div>
     )
   }

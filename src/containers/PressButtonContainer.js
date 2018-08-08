@@ -7,6 +7,8 @@ const mapStateToProps = state => ({user: state.auth});
 const mapDispatchToProps = dispatch => ({
   pushButton: user => {
     db.collection("stamps").doc(user.uid).set({
+      name: user.displayName,
+      uid: user.uid,
       img: user.img,
     }, { merge: true });
     const now = new Date();
