@@ -9,7 +9,6 @@ class Top extends Component {
   render() {
     return (
       <div>
-        <h1>Title</h1>
         <Calendar events={this.props.all}/>
       </div>
     )
