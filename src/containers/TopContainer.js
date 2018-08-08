@@ -13,26 +13,25 @@ const mapDispatchToProps = dispatch => ({
   getAllStamp: all => {
     db.collection("stamps")
     .onSnapshot(querySnapshot => {
-      let stamps = new Array(0), i = 0;
+      let stamps = new Array(0);
       querySnapshot.forEach(doc => {
         const name = doc.data().name;
         const uid = doc.data().uid;
         doc.ref.collection("data")
         .onSnapshot(subQuerySnapshot => {
           subQuerySnapshot.forEach(subDoc => {
-            i++;
             const data = subDoc.data();
             stamps.push({
               title: name,
               allDay: true,
-              start: data.time,
-              end: data.time,
+              start: data.time.toDate(),
+              end: data.time.toDate(),
             });
           });
           const newStamps = stamps.filter((x, i, self) => {
             return self.indexOf(x) === i
           });
-          newStamps.map(stamp => {
+          newStamps.forEach(stamp => {
             const test_arr = all.filter(v => {
               return v.title === stamp.title && v.start.toString() === stamp.start.toString()
             });

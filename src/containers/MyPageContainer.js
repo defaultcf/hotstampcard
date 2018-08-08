@@ -20,8 +20,8 @@ const mapDispatchToProps = dispatch => ({
             id: i,
             title: "日野",
             allDay: true,
-            start: doc.data().time,
-            end: doc.data().time,
+            start: doc.data().time.toDate(),
+            end: doc.data().time.toDate(),
           });
         });
         dispatch(myStamps(stamps));
